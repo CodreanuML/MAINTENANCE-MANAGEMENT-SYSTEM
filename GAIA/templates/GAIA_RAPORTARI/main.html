@@ -1,0 +1,38 @@
+{% extends 'base_assets.html' %}
+   
+
+    {% block title %}<title>Lista Avarii</title>{% endblock%}
+
+
+    {% block content %}
+
+
+
+            
+
+
+	   <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+               SELECTEAZA UN FILTRU PENTRU RAPORTARE : {{Zona.nume}}
+                </div>
+                </div>	
+
+<div class="d-grid gap-2 col-8 mx-auto">
+
+
+
+
+
+  <button type="button" class="btn  btn-outline-primary w-100 mt-3"><a href="{% url 'GAIA_RAPORTARI:raportari_main_filtru_rapoarte_assets' nume_zona=Zona.nume %}">APLICA UN FILTRU</a></button>
+  <button class="btn  btn-outline-primary w-100 mt-3" type="button"><a href="{% url 'GAIA_RAPORTARI:raportari_main_filtru_rapoarte_top10_assets' nume_zona=Zona.nume %}">TOP 10 STATIONARI - DURATA</a> </button>
+  <button class="btn  btn-outline-primary w-100 mt-3 " type="button"><a href="{% url 'GAIA_RAPORTARI:raportari_main_filtru_rapoarte_top10_recurenta_assets' nume_zona=Zona.nume %}">TOP 10 DEFECTE RECURENTE</a> </button>
+  <button class="btn  btn-outline-primary w-100 mt-3" type="button"><a href="{% url 'GAIA_RAPORTARI:raportari_main_filtru_rapoarte_MTBF_assets' nume_zona=Zona.nume %}">NUMAR INTERVENTII - MTBF</a></button>
+   <button class="btn  btn-outline-primary w-100 mt-3 " type="button"><a href="{% url 'GAIA_RAPORTARI:raportari_main_filtru_rapoarte_MTTR_assets' nume_zona=Zona.nume %}">TOTAL MINUTE STATIONAR - MTTR</button>
+</div>
+
+
+
+      {% endblock %}
+
+</html>
+

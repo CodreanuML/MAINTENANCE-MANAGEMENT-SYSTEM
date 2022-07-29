@@ -1,0 +1,100 @@
+{% extends 'base_assets.html' %}
+{% load crispy_forms_filters %}      
+
+    {% block title %}<title>Assets</title>{% endblock%}
+
+
+    {% block content %}
+      
+
+     
+                <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+                TOP 10 STATIONARI DURATA {{Zona.nume}} - STATII LUCRU
+                </div>
+                </div>
+
+
+<div class="container">
+<div class="row justify-content-center">
+    <div class="card">
+      <div class="card-body">
+
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+                {{ myFilter.form|crispy}}
+            <button type="submit" class="btn btn-primary  btn-block" >FILTREAZA</button>
+</form>        
+
+</div>
+<div class="card-footer">
+  FORMATUL DE CAUTARE IN FUNCTIE DE DATA ESTE LUNA/ZI/AN EXEMPLU 1/10/2022 
+</div>
+</div>
+</div>
+</div>
+   
+
+
+            
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link " aria-current="page" href="{% url 'GAIA_RAPORTARI:raportari_main_filtru_rapoarte_top10_assets' nume_zona=Zona.nume %}">RAPOARTE LINII PRODUCTIE</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'GAIA_RAPORTARI:raportari_main_filtru_rapoarte_top10_subassets' nume_zona=Zona.nume %}">RAPOARTE STATII LUCRU</a>
+  </li>
+</ul>
+
+
+<div class="row">
+    <table class="table">
+
+        <thead>
+             <tr>
+             
+                <th scope="col">Numar</th>
+                <th scope="col">Denumire</th>
+                <th scope="col">Linii Productie</th>
+                <th scope="col">Durata min</th>
+                <th scope="col">Vizualizare</th>
+                
+            </tr>
+        </thead>
+
+        <tbody>
+              {% for raport in Rapoarte_called %}
+                {% if raport.Status %}
+            
+               <tr>
+         
+                <td>{{raport.numar}} </td>
+                <td>{{raport.denumire}} </td>
+                <td>{{raport.Asset}} </td>
+                <td>{{raport.durata_interventie}} </td>
+                <td>        
+                                  <button type="button" class="btn btn-outline-primary"><a href="{% url 'mnt_corectiva_vezi_mentenanta_rapoart_subasset' pk=raport.pk %}">Vezi Raport </a></button>  
+                </td>         
+               </tr>
+
+                {%endif%}
+
+            {% endfor %}                
+ 
+         </tbody>
+
+
+    </table>
+
+
+
+  
+
+</div>
+
+
+      {% endblock %}
+
+</html>

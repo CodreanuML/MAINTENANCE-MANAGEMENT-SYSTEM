@@ -1,0 +1,89 @@
+{% extends 'base_accounts.html' %}
+{% load crispy_forms_filters %}
+
+
+      {% block content %}
+                <div id="accounts">
+                <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+                BINE AI VENIT  !
+                </div>
+                </div>
+                </div>
+             
+
+  {% for message in messages %}
+                <div id="accounts">
+                <div class="alert alert-warning" role="alert">
+                
+                <div class="row justify-content-center">
+                {{message}}
+                </div>
+             
+                </div>
+                </div>
+     {%endfor%}
+
+
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+
+                <div class="alert alert-primary" role="alert">
+
+                <div class="row justify-content-center"> <strong>
+                Nume utilizator: {{ user.username }} </strong> 
+                
+                </div><strong>
+
+                <div class="row justify-content-center">
+                Departament: {{ user.employee.department }}</strong>  
+                
+                </div>
+
+                  <div class="row justify-content-center">   <strong>
+                Zona: {{ user.employee.Zona }} </strong> 
+                 </div>
+                </div>
+
+
+
+                
+
+
+        <div class="card">
+
+          <div class="card-body">
+            
+        <div class="alert alert-primary" role="alert">
+
+                                <div class="row justify-content-center">
+                SELECTEAZA APLICATIA 
+                </div>
+                </div>
+         
+          <a href="{% url 'phome' %}" type="button" class="btn btn-primary btn-block">PRODUCTIE</a>
+          <a href="{% url 'mhome' %}" type="button" class="btn btn-primary btn-block">MENTENANTA</a>
+          
+          
+         
+
+  
+          </div>
+          <div class="card-footer text-muted text-center">
+           Info : Drepturile tale de administrare iti pot permite  sa accesezi anumite submodule din aplicatie .
+          </div>
+          <div class="card-footer text-muted text-center">
+           <a href="{%url 'user_logout' %}">Delogare</a>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+  </div>    
+
+      {% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'GAIA_ME_CORECTIVA_TEMPLATES/base_me_corectiva_productie.html' %}
+{% load crispy_forms_filters %}
+
+
+      {% block content %}
+
+
+     <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+                INREGISTRARE RAPORT NOU AVARIE
+                </div>
+                </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+      
+
+           
+
+ 
+
+                <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10 col-sm-12">
+                <div class="card">
+
+                <div class="card-body">
+           
+                <p class="card-title"><strong>Raport Nou: {{ Asset.denumire }} </strong></p>
+
+                <form method="post" novalidate>
+                {% csrf_token %}
+                {{ form | crispy }}
+                <button type="submit" class="btn btn-primary btn-block">Inregistreaza Raport</button>
+                </form>
+
+                </div>
+
+                </div>
+                </div>
+                </div>
+
+       </div>
+    </div>  
+
+
+      
+
+      {% endblock %}

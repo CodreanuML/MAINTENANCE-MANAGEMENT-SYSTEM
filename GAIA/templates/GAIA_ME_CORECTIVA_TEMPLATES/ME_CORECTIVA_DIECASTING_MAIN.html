@@ -1,0 +1,126 @@
+{% extends 'GAIA_ME_CORECTIVA_TEMPLATES/base_me_corectiva_productie.html'  %}
+   
+
+    {% block title %}<title>Assets</title>{% endblock%}
+
+
+    {% block content %}
+      
+
+
+     
+                <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+                DIECASTING - LINII PRODUCTIE
+                </div>
+                </div>
+            
+
+
+
+<div class="row">
+    <table class="table">
+
+        <thead>
+             <tr>
+                <th scope="#">#</th>
+                <th scope="col">Denumire</th>
+                <th scope="col">Statii Lucru</th>
+            
+                <th scope="col">ID</th>
+                
+                
+                <th scope="col">Statii Lucru</th>
+                 <th scope="col">Raport Nou</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for asset in Assets %}
+               <tr>
+                <td>{{asset.pk}} </td>
+                <td>{{asset.denumire}} </td>
+                {% if asset.subasset_val == 0 %}
+                <td>Nu contine </td>
+                {% else %}
+                <td>Contine</td>
+                {% endif %}
+
+                <td>{{asset.ID_Asset}}</td>
+                
+                
+
+                {% if asset.subasset_val == 0 %}
+                <td></td>
+                {% else %}
+                <td>
+
+                   
+                         <button type="button" class="btn btn-outline-primary"><a href="{% url 'me_corectiva_diecasting_subasset' pk=asset.pk %}">VEZI DETALII</a></button>  
+
+                </td>
+
+                {% endif %}        
+                <td>        
+                                  <button type="button" class="btn btn-outline-primary"><a href="{% url 'raportnouasset0.0' pk=asset.pk %}">RAPORT NOU </a></button>  
+                </td>         
+               </tr>
+
+            {% endfor %}                
+ 
+         </tbody>
+
+
+    </table>
+
+
+{% if Assets.has_other_pages %}
+<nav aria-label="Topics pagination" class="mb-4">
+    <ul class="pagination">
+      {% if Assets.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ Assets.previous_page_number }}">Previous</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Previous</span>
+        </li>
+      {% endif %}
+
+      {% for page_num in Assets.paginator.page_range %}
+        {% if Assets.number == page_num %}
+          <li class="page-item active">
+            <span class="page-link">
+              {{ page_num }}
+              <span class="sr-only">(current)</span>
+            </span>
+          </li>
+        {% else %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      {% if Assets.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ Assets.next_page_number }}">Next</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Next</span>
+        </li>
+      {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+</div>    
+
+
+
+
+      {% endblock %}
+
+</html>

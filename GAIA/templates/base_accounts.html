@@ -1,0 +1,49 @@
+{% load static %}
+  
+   
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">  
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% block title %}{% endblock %}
+
+  </head>
+
+  <body>
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
+<div class="container-fluid"> 
+
+  <div class="row">
+  <div class="col-sm-2 mt-2 ">
+
+
+    
+    <img  id="img-bottom"  src="/static/images/logo.png" width="50" height="50" alt="">
+  
+
+  </div>
+  <div class="col-sm-8 mt-2">    
+       {% block content %}
+      {% endblock %}</div>
+  <div class="col-sm-2 mt-2">
+
+  
+
+
+</div>
+
+</div>
+
+</div>
+</html>

@@ -1,0 +1,59 @@
+{% extends 'base_assets.html' %}
+ {% block title %}<title>Assets</title>{% endblock%}
+ {% load crispy_forms_filters %}
+
+
+    {% block content %}
+
+
+
+
+     
+                <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+                PLAN ACTIUNI - ADAUGARE ACTIUNE NOUA
+                </div>
+                </div>
+            
+
+
+ 
+    
+
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+        <div class="card">
+
+          <div class="card-body">
+            <h3 class="card-title">Adauga Actiune</h3>
+
+
+
+
+
+
+
+               <div class="form">
+
+                          <form method="post">
+                              {% csrf_token %}
+
+                              {{ form|crispy }}
+                              <button type="submit" class="btn btn-outline-primary">Salvare ACTIUNE</button>
+                          </form>
+
+     </div>
+    </div> 
+    <div class="card-footer">
+      FORMAT DATA MM/DD/YYYY 
+      M-Luna , D-Ziua , Y- AN
+    </div >
+    </div> 
+    </div> 
+    </div> 
+
+
+
+
+    {% endblock %}

@@ -1,0 +1,114 @@
+{% extends 'GAIA_ME_CORECTIVA_TEMPLATES/base_me_corectiva_productie.html'  %}
+   
+
+    {% block title %}<title>Assets</title>{% endblock%}
+
+
+    {% block content %}
+      
+
+     
+                <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+                RAPOARTE FOAMING - STATII LUCRU
+                </div>
+                </div>
+            
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link " aria-current="page" href="{% url 'me_corectiva_foaming_rapoarte'  %}">RAPOARTE LINII PRODUCTIE</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'me_corectiva_foaming_rapoarte_subassets' %}">RAPOARTE STATII LUCRU</a>
+  </li>
+</ul>
+
+
+<div class="row">
+    <table class="table">
+
+        <thead>
+             <tr>
+             
+                <th scope="col">Numar</th>
+                <th scope="col">Denumire</th>
+                <th scope="col">Linie Productie</th>
+                <th scope="col">Statie Lucru</th>
+                <th scope="col">Vizualizare</th>
+            </tr>
+        </thead>
+
+        <tbody>
+              {% for raport in Rapoarte_called %}
+                {% if raport.Status %}
+            
+               <tr>
+         
+                <td>{{raport.numar}} </td>
+                <td>{{raport.denumire}} </td>
+                <td>{{raport.Asset}} </td>
+                <td>{{raport.SubAsset}} </td>
+              
+                <td>        
+                                  <button type="button" class="btn btn-outline-primary"><a href="{% url 'me_corectiva_vezi_rapoart_subasset' pk=raport.pk %}">Vezi Raport </a></button>  
+                </td>         
+               </tr>
+
+                {%endif%}
+
+            {% endfor %}                
+ 
+         </tbody>
+
+
+    </table>
+
+
+{% if Rapoarte_called.has_other_pages %}
+<nav aria-label="Topics pagination" class="mb-4">
+    <ul class="pagination">
+      {% if Rapoarte_called.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ Rapoarte_called.previous_page_number }}">Previous</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Previous</span>
+        </li>
+      {% endif %}
+
+      {% for page_num in Rapoarte_called.paginator.page_range %}
+        {% if Rapoarte_called.number == page_num %}
+          <li class="page-item active">
+            <span class="page-link">
+              {{ page_num }}
+              <span class="sr-only">(current)</span>
+            </span>
+          </li>
+        {% else %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      {% if Rapoarte_called.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ Rapoarte_called.next_page_number }}">Next</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Next</span>
+        </li>
+      {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+</div>    
+
+
+      {% endblock %}
+
+</html>

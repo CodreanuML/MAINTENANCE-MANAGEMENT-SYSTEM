@@ -1,0 +1,45 @@
+{% extends 'base_accounts.html' %}
+{% load crispy_forms_filters %}
+
+
+      {% block content %}
+
+                <div id="accounts">
+                <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center"><strong>
+                ZF MAINTENANCE PORTAL </strong>
+                </div>
+                </div>
+                </div>
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+        <div class="card">
+
+          <div class="card-body">
+            
+                <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+                LOGARE UTILIZATOR
+                </div>
+                </div>
+
+            <form method="post" validate>
+              {% csrf_token %}
+              {{ form | crispy }}
+              <button type="submit" class="btn btn-primary btn-block">Logare Utilizator</button>
+            </form>
+
+          </div>
+          
+          <div class="card-footer text-muted text-center">
+            Pentru a putea continua te rog frumos sa te autentifici .
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>    
+
+      {% endblock %}

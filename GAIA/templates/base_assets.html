@@ -1,0 +1,126 @@
+   {% load static %}
+  
+   
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css">  
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {% block title %}{% endblock %}
+
+  </head>
+
+  <body>
+
+
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
+  <div class="container-fluid mt-1">
+
+  <div class="navigationbar" >
+   
+  <nav class="navbar navbar-light bg-light ">
+      
+  <form class="container-fluid justify-content-center">
+
+
+        
+        <a class="btn btn-outline-primary mr-1 mt-1" href="{% url 'mhome' %}" role="button">ACASA</a>     
+        
+
+
+
+
+
+
+       
+
+        <div class="dropdown">
+          <button class="btn btn-outline-primary mr-1 mt-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">ME CORECTIVA</button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item"  href="{% url 'mnt_corectiva_mentanta_airbag_rapoarte' %}">AIRBAG</a></li>
+                  <li><a class="dropdown-item" href="{% url 'mnt_corectiva_mentanta_asamblare_rapoarte' %}">ASAMBLARE</a></li>
+                  <li><a class="dropdown-item" href="{% url 'mnt_corectiva_mentanta_diecasting_rapoarte' %}">DIECASTING</a></li>
+                  <li><a class="dropdown-item" href="{% url 'mnt_corectiva_mentanta_foaming_rapoarte' %}">FOAMING</a></li>
+                  <li><a class="dropdown-item" href="{% url 'mnt_corectiva_mentanta_imo_rapoarte' %}">IMO</a></li>
+                  <li><a class="dropdown-item" href="{% url 'mnt_corectiva_mentanta_lw_rapoarte' %}">LEATHER C</a></li>
+                  <li><a class="dropdown-item" href="{% url 'mnt_corectiva_mentanta_toolshop_rapoarte' %}">TOOLSHOP</a></li>
+              </ul>
+        </div>
+
+      
+
+        <div class="dropdown">
+          <button class="btn btn-outline-primary mr-1 mt-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">LINII PRODUCTIE</button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item"  href="{% url 'assets_airbag_main' %}">AIRBAG</a></li>
+                  <li><a class="dropdown-item" href="{% url 'assets_asamblare_main' %}">ASAMBLARE</a></li>
+                  <li><a class="dropdown-item" href="{% url 'assets_diecasting_main' %}">DIECASTING</a></li>
+                  <li><a class="dropdown-item" href="{% url 'assets_foaming_main' %}">FOAMING</a></li>
+                  <li><a class="dropdown-item" href="{% url 'assets_imo_main' %}">IMO</a></li>
+                  <li><a class="dropdown-item" href="{% url 'assets_lw_main' %}">LEATHER C</a></li>
+                  <li><a class="dropdown-item" href="{% url 'assets_toolshop_main' %}">TOOLSHOP</a></li>
+              </ul>
+        </div>
+
+        <a class="btn btn-outline-primary mr-1 mt-1" href="{% url 'GAIA_PLAN_ACTIUNI:asamblare_actiuni_main' %} " role="button">PLAN ACTIUNI</a> 
+                <div class="dropdown">
+          <button class="btn btn-outline-primary mr-1 mt-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">RAPORTARI</button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item"  href="{% url 'GAIA_RAPORTARI:raportari_main' nume_zona='Airbag' %}">AIRBAG</a></li>
+                  <li><a class="dropdown-item" href="{% url 'GAIA_RAPORTARI:raportari_main' nume_zona='Asamblare' %}">ASAMBLARE</a></li>
+                  <li><a class="dropdown-item" href="{% url 'GAIA_RAPORTARI:raportari_main' nume_zona='Diecasting' %}">DIECASTING</a></li>
+                  <li><a class="dropdown-item" href="{% url 'GAIA_RAPORTARI:raportari_main' nume_zona='Foaming' %}">FOAMING</a></li>
+                  <li><a class="dropdown-item" href="{% url 'GAIA_RAPORTARI:raportari_main' nume_zona='IMO' %}">IMO</a></li>
+                  <li><a class="dropdown-item" href="{% url 'GAIA_RAPORTARI:raportari_main' nume_zona='LW' %}">LEATHER C</a></li>
+                  <li><a class="dropdown-item" href="{% url 'GAIA_RAPORTARI:raportari_main' nume_zona='Toolshop' %}">TOOLSHOP</a></li>
+              </ul>
+        </div>
+
+
+        
+        <a class="btn btn-outline-primary mr-1 mt-1" href="{% url 'GAIA_MAGAZIE:magazie_main_locatii' %}" role="button">MAGAZIE</a> 
+    <div>
+       {% if user.employee.department == 'Mentenanta' %}
+       <a class="btn btn-outline-primary mr-1 mt-1" href="{% url 'GAIA_ACCOUNTS:accounts_main' %}" role="button">UTILIZATOR</a> 
+        {% else %}
+       <a class="btn btn-outline-primary mr-1 mt-1" href="{% url 'GAIA_ACCOUNTS:creare_utilizator_mnt' %}" role="button">INREGISTRARE</a> 
+       {% endif %}
+       </div>
+       <a class="btn btn-outline-primary mr-1 mt-1" href="{% url 'user_logout' %}" role="button">DECONECTARE</a> 
+        </div>
+
+        
+      </form>
+    </nav>
+  </div>
+</div>
+</div>
+
+
+
+<div class="container-fluid vertical-center   " > 
+  <div class="text_size">
+  <div class="row mr-3 ml-3 mt-2 h-100 ">
+ 
+  <div class="col-sm-12 h-100">   
+  <div class="p-3 border bg-light h-100"> 
+       {% block content %}
+      {% endblock %}</div>
+  </div>
+ </div>
+</div>
+</div>
+</body>
+
+
+
+ 
+</html>

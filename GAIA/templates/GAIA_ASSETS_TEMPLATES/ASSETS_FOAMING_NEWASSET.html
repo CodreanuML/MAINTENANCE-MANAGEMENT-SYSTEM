@@ -1,0 +1,37 @@
+{% extends 'base_assets.html' %}
+{% load crispy_forms_filters %}
+
+    {% block title %}<title>Assets</title>{% endblock%}
+
+
+    {% block content %}
+      
+                <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+                ADAUGA LINIE PRODUCTIE
+                </div>
+                </div>
+
+
+
+     <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+
+    
+
+               <div class="p-3 border bg-light">
+
+                          <form method="post">
+                              {% csrf_token %}
+
+                              {{ form|crispy }}
+                              <button type="submit" class="btn btn-outline-primary">Salvare Linie</button>
+                          </form>
+
+     </div>
+
+  </div> 
+  </div> 
+
+
+    {% endblock %}

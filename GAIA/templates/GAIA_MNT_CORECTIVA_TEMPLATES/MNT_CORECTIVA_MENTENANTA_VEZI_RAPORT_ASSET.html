@@ -1,0 +1,66 @@
+{% extends 'base_assets.html' %}
+   
+
+    {% block title %}<title>DETALII RAPORT</title>{% endblock%}
+
+
+    {% block content %}
+    
+                    <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+                DETALII RAPORT : {{ Raport.denumire }} 
+                </div>
+                </div>
+      
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+      
+
+
+
+
+               <div class="card alert-primary" role="alert" >
+               <div class="card-header">
+                  Denumire Raport :  {{ Raport.denumire }} 
+              </div>
+                  <ul class="list-group list-group-flush ">
+                  <li class="list-group-item ">Numar Raport : {{ Raport.numar }} </li>
+                  <li class="list-group-item">Zona :{{ Raport.Asset.Zona }}</li>
+                  <li class="list-group-item">Linie Productie :{{ Raport.Asset }}</li>
+                  <li class="list-group-item">Descrierea avariei : {{ Raport.descriere }}</li>
+                  <li class="list-group-item">Cauza avariei : {{ Raport.cauza_avariei }}</li>
+                  <li class="list-group-item">Activitati efectuate : {{ Raport.activitati_efectuate }}</li>
+                  <li class="list-group-item">Observatii : {{ Raport.Observatii }}</li>
+                  <li class="list-group-item">Nume initiator raport: {{ Raport.NUME_ME_1 }}</li>
+                  <li class="list-group-item">Nr marca initiator raport: {{ Raport.Cod_Marca_ME_1 }}</li>
+                  <li class="list-group-item">Nume tehnician mentenanta: {{ Raport.NUME_MAINT }}</li>
+                  <li class="list-group-item">Nr tehnician mentenanta: {{ Raport.Cod_Marca_MAINT }}</li>
+                  <li class="list-group-item">Nume responsabil preluare : {{ Raport.NUME_ME_2 }}</li>
+                  <li class="list-group-item">Nr marca responsabil preluare: {{ Raport.Cod_Marca_ME_2 }}</li>
+                  <li class="list-group-item">Semnalat la : {{ Raport.Semnalat_de_productie }}</li>
+                  <li class="list-group-item">Comunicat la intretinere: {{ Raport.Comunicat_la_intretinere }}</li>
+                  <li class="list-group-item">Interventie inceputa la : {{ Raport.Interventie_inceputa }}</li>
+                  <li class="list-group-item">Interventie finalizata la : {{ Raport.Interventie_finalizata }}</li>
+                  <li class="list-group-item">Durata interventie: {{ Raport.durata_interventie }} Minute</li>
+                   <li class="list-group-item">Nr subasseturi impactate: {{ Raport.total_subassets }} </li>
+                  <li class="list-group-item">Durata interventie totala : {{ Raport.durata_interventie_totala }} Minute</li>
+                  <li class="list-group-item"><div class="row">
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'assets_airbag_newasset' %}">PRINTEAZA-MA</a></button>  
+
+</div></li>
+                  
+
+              </ul>
+              </div>
+
+       </div>
+    </div>  
+  </div>
+
+
+
+      {% endblock %}
+
+</html>

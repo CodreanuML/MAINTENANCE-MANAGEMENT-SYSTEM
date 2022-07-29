@@ -1,0 +1,104 @@
+{% extends 'base_assets.html' %}
+   
+
+    {% block title %}<title>Lista Avarii</title>{% endblock%}
+
+
+    {% block content %}
+      
+
+     
+                <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+                LISTA AVARII : {{Asset.denumire}}
+                </div>
+                </div>
+            
+
+
+
+<div class="row">
+
+    <table class="table">
+
+        <thead>
+             <tr>
+                <th scope="#">#</th>
+                <th scope="col">Denumire</th>
+                <th scope="col">Linie Productie</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for avarie in Avarii %}
+               <tr>
+                <td>{{avarie.pk}} </td>
+                <td>{{avarie.denumire}} </td>
+                  
+                <td>{{Asset.denumire}}</td>
+               </tr>
+
+            {% endfor %}                
+ 
+         </tbody>
+
+
+    </table>
+
+
+{% if Avarii.has_other_pages %}
+<nav aria-label="Topics pagination" class="mb-4">
+    <ul class="pagination">
+      {% if Avarii.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ Avarii.previous_page_number }}">Previous</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Previous</span>
+        </li>
+      {% endif %}
+
+      {% for page_num in Avarii.paginator.page_range %}
+        {% if Avarii.number == page_num %}
+          <li class="page-item active">
+            <span class="page-link">
+              {{ page_num }}
+              <span class="sr-only">(current)</span>
+            </span>
+          </li>
+        {% else %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      {% if Avarii.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ Assets.next_page_number }}">Next</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Next</span>
+        </li>
+      {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+</div>
+<div class="row">
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'assets_airbag_avarie_noua' pk=Asset.pk %}">AVARIE NOUA</a></button>  
+
+</div>  
+
+
+
+
+
+
+
+      {% endblock %}
+

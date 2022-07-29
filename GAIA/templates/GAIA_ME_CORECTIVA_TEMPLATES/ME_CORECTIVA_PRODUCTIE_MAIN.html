@@ -1,0 +1,136 @@
+{% extends 'GAIA_ME_CORECTIVA_TEMPLATES/base_me_corectiva_productie.html'   %}
+{% load crispy_forms_filters %}
+
+    {% block title %}<title>Assets</title>{% endblock%}
+
+
+    {% block content %}
+      
+    
+
+
+
+  
+                <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+                INTERVENTII IN DESFASURARE
+                </div>
+                </div>
+            
+
+    <div class="row">
+
+    <div class="col-lg-6 col-md-6 col-sm-6">
+
+                <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+                RAPOARTE INITIATE DE PRODUCTIE
+                </div>
+                </div>
+            
+
+      {%for raport in RaportAvarie_deschis_ME %}
+     
+        <div class="card text-dark bg-light mb-3 border-danger">
+
+          <div class="card-header border-danger "><strong>ZONA: {{raport.Asset.Zona}}</strong></div>
+          <div class="card-body  ">
+               <p class="card-title "><strong>Raport Linie Productie</strong></p><hr/> 
+              <p class="card-title "><strong>Linie Productie: {{raport.Asset}}</strong></p><hr/>
+              <p class="card-text"><strong>Denumire Raport: {{raport.denumire}}</strong></p><hr/>
+              <p class="card-text"><strong>Initiat de: {{raport.NUME_ME_1}}</strong></p>
+
+          </div>
+        </div>
+   
+      
+
+    {%endfor%}
+
+
+    {%for raport in RaportAvarieSubAsset_deschis_ME %}
+     
+        <div class="card text-dark bg-light mb-3 border-danger">
+
+          <div class="card-header border-danger "><strong>ZONA: {{raport.Asset.Zona}}</strong></div>
+          <div class="card-body  ">
+              <p class="card-title "><strong>Raport Statie Lucru</strong></p><hr/>  
+              <p class="card-title "><strong>Linie Prodcutie: {{raport.Asset}}</strong></p><hr/>
+              <p class="card-text"><strong>Statie Lucru: {{raport.SubAsset}}</strong></p><hr/>
+              <p class="card-text"><strong>Denumire Raport: {{raport.denumire}}</strong></p><hr/>
+
+              <p class="card-text"><strong>Initiat de: {{raport.NUME_ME_1}}</strong></p>
+
+          </div>
+        </div>
+   
+      
+
+    {%endfor%}
+
+
+    </div>  
+
+
+        <div class="col-lg-6 col-md-6 col-sm-6">
+
+                <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+                RAPOARTE TERMINATE MENTENANTA
+                </div>
+                </div>
+            
+
+      {%for raport in RaportAvarie_deschis_MNT %}
+     
+        <div class="card text-dark bg-light mb-3 border-success">
+           <div class="card-header border-success "><strong>ZONA: {{raport.Asset.Zona}}</strong></div>
+                 
+          <div class="card-body  ">
+              <p class="card-title "><strong>Raport Linie Productie</strong></p><hr/> 
+              <p class="card-title "><strong>Linie Productie: {{raport.Asset}}</strong></p><hr/>
+              <p class="card-text"><strong>Denumire Raport: {{raport.denumire}}</strong></p><hr/>
+              <p class="card-text"><strong>Incheiat de: {{raport.NUME_MAINT}}</strong></p>
+              
+              
+          </div>
+        </div>
+   
+      
+
+    {%endfor%}
+
+    {%for raport in RaportAvarieSubAsset_deschis_MNT %}
+     
+        <div class="card text-dark bg-light mb-3 border-success">
+           <div class="card-header border-success "><strong>ZONA: {{raport.Asset.Zona}}</strong></div>
+                 
+          <div class="card-body  ">
+              <p class="card-title "><strong>Raport Statie Lucru</strong></p><hr/> 
+              <p class="card-title "><strong>Linie Productie: {{raport.Asset}}</strong></p><hr/>
+              <p class="card-text"><strong>Statie Lucru: {{raport.SubAsset}}</strong></p><hr/>
+              <p class="card-text"><strong>Denumire Raport: {{raport.denumire}}</strong></p><hr/>
+              <p class="card-text"><strong>Incheiat de: {{raport.NUME_MAINT}}</strong></p>
+             
+              
+          </div>
+        </div>
+   
+      
+
+    {%endfor%}
+
+    
+
+    </div>  
+
+
+
+
+
+ 
+</div> 
+
+
+    {% endblock %}
+

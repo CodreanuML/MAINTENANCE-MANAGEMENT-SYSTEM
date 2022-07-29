@@ -1,0 +1,63 @@
+{% extends 'base_assets.html' %}
+ {% block title %}<title>Assets</title>{% endblock%}
+
+
+    {% block content %}
+
+                      <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+                Detalii Obiect : {{ Item.nume }} 
+                </div>
+                </div>
+
+  
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+      
+
+
+               <div class="card alert-primary" role="alert" >
+               <div class="card-header">
+                  Denumire Obiect:  {{ Item.nume }} 
+              </div>
+                  <ul class="list-group list-group-flush ">
+                  <li class="list-group-item ">Numar Obiect: {{ Item.part_no }} </li>
+                  <li class="list-group-item">Locatie: {{ Item.location }}</li>
+                  <li class="list-group-item">
+                 Modifica Stoc:  <button type="button" class="btn btn-outline-primary"><a href="{% url 'GAIA_MAGAZIE:item_modify_plus' Item.pk %}">+</a></button> 
+                  <button type="button" class="btn btn-outline-primary"><a href="{% url 'GAIA_MAGAZIE:item_modify_minus' Item.pk %}">-</a></button>
+                 </li>
+
+                  <li class="list-group-item">Stoc curent: {{ Item.stock_qty }}</li>
+                  <li class="list-group-item">Pret Unitar: {{ Item.unit_price }}</li>
+                  
+
+                  <li class="list-group-item">
+                 Stock minimim: {{ Item.minimun_stock_qty }}
+                 </li>
+
+                              <li class="list-group-item">Stock Maxim: {{ Item.maximum_stock_qty }}</li>
+                  {% if Item.critical  %}
+                    <li class="list-group-item">Piesa Critica: DA </li>
+
+                  {% else %}
+                    <li class="list-group-item">Piesa Critica: NU </li>
+                  {% endif %}
+                 
+
+</div></li>
+                  
+
+              </ul>
+              </div>
+
+       </div>
+    </div>  
+  
+
+
+
+      {% endblock %}
+
+</html>

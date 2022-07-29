@@ -1,0 +1,127 @@
+{% extends 'base_assets.html' %}
+ {% block title %}<title>Assets</title>{% endblock%}
+
+
+    {% block content %}
+
+
+
+
+    
+
+
+
+
+     
+ 
+                <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+                MAGAZIE 
+                </div>
+                </div>
+            
+<ul class="nav nav-tabs">
+
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'GAIA_MAGAZIE:magazie_main_items' %}">OBIECTE</a>
+  </li>
+
+    <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'GAIA_MAGAZIE:magazie_main_locatii'  %}">LOCATII</a>
+  </li>
+</ul>
+
+
+
+
+
+
+
+            
+
+<div class="row">
+    <table class="table">
+
+        <thead>
+             <tr>
+                <th scope="#">#</th>
+                <th scope="col">Denumire Locatie</th>
+                <th scope="col">Vezi Continut Locatie</th>
+
+                
+               
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for cart in page_obj %}
+               <tr>
+                <td>{{cart.pk}} </td>
+                <td>{{cart.nume}} </td>
+                <td><button type="button" class="btn btn-outline-primary"><a href="{%url 'GAIA_MAGAZIE:continut_locatie' cart.pk %}">Vezi Continut </a></button>  </td>
+         
+
+            {% endfor %}                
+ 
+         </tbody>
+
+    </table>
+</div>
+
+
+
+
+
+    {% if page_obj.has_other_pages %}
+<nav aria-label="Topics pagination" class="mb-4">
+    <ul class="pagination">
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Previous</span>
+        </li>
+      {% endif %}
+
+      {% for page_num in page_obj.paginator.page_range %}
+        {% if page_obj.number == page_num %}
+          <li class="page-item active">
+            <span class="page-link">
+              {{ page_num }}
+              <span class="sr-only">(current)</span>
+            </span>
+          </li>
+        {% else %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Next</span>
+        </li>
+      {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+
+
+<div class="row">
+    <button type="button" class="btn btn-outline-primary"><a href="{% url 'GAIA_MAGAZIE:magazie_add_location' %}">ADAUGA LOCATIE NOUA</a></button>  
+
+</div>
+
+</div>
+
+    {% endblock %}
+

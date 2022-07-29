@@ -1,0 +1,55 @@
+{% extends 'base_assets.html' %}
+ {% block title %}<title>Assets</title>{% endblock%}
+
+
+    {% block content %}
+
+      
+                 <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+                Detal Actiune: {{ Actiune.denumire }} 
+                </div>
+                </div>
+
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+      
+
+
+
+               <div class="card alert-primary" role="alert" >
+               <div class="card-header">
+                  Denumire Actiune:  {{ Actiune.denumire }} 
+              </div>
+
+
+                  <ul class="list-group list-group-flush ">
+                  
+                  <li class="list-group-item ">Cauza : {{ Actiune.cauza }} </li>
+                  <li class="list-group-item ">Actiune : {{ Actiune.Actiune }} </li>
+              
+                  <li class="list-group-item ">Status : {{ Actiune.get_status_display}} </li>
+                  <li class="list-group-item ">Data Deschidere : {{ Actiune.data_deschidre_actiune}} </li>
+                  <li class="list-group-item ">Data Preconizare Finalizare : {{ Actiune.data_preconizare_finalizare}} </li>
+                  <li class="list-group-item ">Data Finalizarii : {{ Actiune.data_finaliarii}} </li>
+                  <li class="list-group-item ">Data Verificarii Eficientei: {{ Actiune.data_verificarii_eficientei}} </li>
+                  <li class="list-group-item ">Comentarii : {{ Actiune.comentarii}} </li>
+                  <li class="list-group-item ">Zona : {{ Actiune.zona}} </li>
+                  <li class="list-group-item "><button type="button" class="btn btn-outline-primary"><a href="{% url 'GAIA_PLAN_ACTIUNI:editeaza_actiune' Actiune.pk %}">Editeaza Actiune</a></button>  </li>
+         
+
+
+                  
+
+              </ul>
+              </div>
+
+       </div>
+    </div>  
+
+
+
+
+      {% endblock %}
+
+</html>

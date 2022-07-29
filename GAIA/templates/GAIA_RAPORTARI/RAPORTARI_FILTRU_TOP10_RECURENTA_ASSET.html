@@ -1,0 +1,102 @@
+{% extends 'base_assets.html' %}
+{% load crispy_forms_filters %}   
+
+    {% block title %}<title>Assets</title>{% endblock%}
+
+
+    {% block content %}
+      
+
+
+     
+
+
+
+
+
+                <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+                TOP10 STATIONARI RECURENTA {{Zona.nume}} - LINII PRODCUTIE
+                </div>
+                </div>
+
+
+<div class="container">
+<div class="row justify-content-center">
+    <div class="card">
+
+      <div class="card-body">
+
+
+            <form method="post" novalidate>
+                {% csrf_token %}
+                {{ myFilter.form|crispy}}
+            <button type="submit" class="btn btn-primary  btn-block" >FILTREAZA</button>
+</form>        
+
+</div>
+<div class="card-footer">
+
+  FORMATUL DE CAUTARE IN FUNCTIE DE DATA ESTE LUNA/ZI/AN EXEMPLU 1/10/2022 
+
+
+</div>
+
+</div>
+</div>
+</div>   
+
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'GAIA_RAPORTARI:raportari_main_filtru_rapoarte_top10_recurenta_assets' nume_zona=Zona.nume %}">RAPOARTE LINII PRODUCTIE</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'GAIA_RAPORTARI:raportari_main_filtru_rapoarte_top10_recurenta_subassets' nume_zona=Zona.nume %}">RAPOARTE STATII LUCRU</a>
+  </li>
+</ul>
+
+
+
+<div class="row">
+    <table class="table">
+
+        <thead>
+             <tr>
+             
+               
+                <th scope="col">Denumire Avariei</th>
+                <th scope="col">Incidenta Avariei in perioada selectata</th>
+                
+            </tr>
+        </thead>
+
+        <tbody>
+              {% for item in Top10 %}
+          
+            
+               <tr>
+         
+                    <td>{{item.0}} </td>
+                    <td>{{item.1}} </td>
+                   
+               </tr>
+
+         
+
+            {% endfor %}                
+ 
+         </tbody>
+
+
+    </table>
+
+
+
+
+
+
+
+      {% endblock %}
+
+</html>

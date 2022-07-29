@@ -1,0 +1,385 @@
+{% extends 'base_assets.html' %}
+
+
+
+   {% block content %}
+   <div class="card text-dark bg-light mb-3 border-primary">
+
+          
+              <div class="card-body  ">
+              <p class="card-title "><strong>Utilizator: {{user.username}}</strong></p><hr/>
+              <p class="card-text"><strong>Departament: {{user.employee.department}}</strong></p><hr/>
+              <p class="card-text"><strong>Zona: {{user.employee.Zona}}</strong></p><hr/>
+                <a href="{% url 'user_logout' %}" class="btn btn-outline-primary" >Delogare Utilizator</a>
+          </div>
+
+    </div>    
+
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'GAIA_ACCOUNTS:accounts_main'  %}">RAPOARTE DESCHISE </a>
+  </li>
+</ul>   
+
+<div class="container_rapoarte">
+
+
+<p id="centrare">ASAMBLARE</p><hr/>
+      {%for raport in Raport_asset %}
+        {% if raport.Asset.Zona.nume == 'Asamblare' %}
+          
+        <div class="card text-dark bg-light mb-3 border-danger">
+
+          <div class="card-header border-danger "><strong> ZONA: {{raport.Asset.Zona}} </strong></div>
+              <div class="card-body  ">
+              <p class="card-title "><strong>Raport Linie Productie</strong></p><hr/>
+              <p class="card-title "><strong>Linie Productie: {{raport.Asset}}</strong></p><hr/>
+              
+              <p class="card-text"><strong>Denumire Raport: {{raport.denumire}}</strong></p><hr/>
+              <p class="card-text"><strong>Initiat de: {{raport.NUME_ME_1}}</strong></p><hr/>
+              {%if not raport.Status_Preluat_MNT %}
+              <a href="{% url 'raportnouasset0.0.1' pk=raport.pk %}"  class="btn btn-outline-danger">Preia Raport</a>
+              {%else%}
+              <a href="{% url 'raportnouasset0.1' pk=raport.pk %}" class="btn btn-outline-danger" >Finalizare Raport</a>
+              {%endif%}
+              
+          </div>
+        </div>
+        {%endif%}
+      
+
+    {%endfor%}
+
+
+         {%for raport in Raport_subasset %}
+           {% if raport.Asset.Zona.nume == 'Asamblare' %}
+        <div class="card text-dark bg-light mb-3 border-danger">
+
+          <div class="card-header border-danger "><strong>ZONA: {{raport.Asset.Zona}}</strong></div>
+              <div class="card-body  ">
+              <p class="card-title "><strong>Raport Statie Lucru</strong></p><hr/>
+              <p class="card-title "><strong>Linie Productie: {{raport.Asset}}</strong></p><hr/>
+              <p class="card-text"><strong>Statie Lucru: {{raport.SubAsset}}</strong></p><hr/>
+              <p class="card-text"><strong>Denumire Raport: {{raport.denumire}}</strong></p><hr/>
+              <p class="card-text"><strong>Initiat de: {{raport.NUME_ME_1}}</strong></p>
+              {%if not raport.Status_Preluat_MNT %}
+              <a href="{% url 'raportnousubasset0.0.1' pk=raport.pk %}"  class="btn btn-outline-danger">Preia Raport</a>
+              {%else%}
+              <a href="{% url 'raportnousubasset0.1' pk=raport.pk %}" class="btn btn-outline-danger" >Finalizare Raport</a>
+              {%endif%}
+              
+          </div>
+        </div>
+        {%endif%}
+      
+    {%endfor%}
+
+
+<p id="centrare">AIRBAG</p><hr/>
+
+      {%for raport in Raport_asset %}
+        {% if raport.Asset.Zona.nume == 'Airbag' %}
+          
+        <div class="card text-dark bg-light mb-3 border-danger">
+
+          <div class="card-header border-danger "><strong> ZONA: {{raport.Asset.Zona}} </strong></div>
+              <div class="card-body  ">
+              <p class="card-title "><strong>Raport Linie Productie</strong></p><hr/>
+              <p class="card-title "><strong>Linie Productie: {{raport.Asset}}</strong></p><hr/>
+              
+              <p class="card-text"><strong>Denumire Raport: {{raport.denumire}}</strong></p><hr/>
+              <p class="card-text"><strong>Initiat de: {{raport.NUME_ME_1}}</strong></p><hr/>
+              {%if not raport.Status_Preluat_MNT %}
+              <a href="{% url 'raportnouasset0.0.1' pk=raport.pk %}"  class="btn btn-outline-danger">Preia Raport</a>
+              {%else%}
+              <a href="{% url 'raportnouasset0.1' pk=raport.pk %}" class="btn btn-outline-danger" >Finalizare Raport</a>
+              {%endif%}
+              
+          </div>
+        </div>
+        {%endif%}
+      
+
+    {%endfor%}
+
+
+         {%for raport in Raport_subasset %}
+           {% if raport.Asset.Zona.nume == 'Airbag' %}
+        <div class="card text-dark bg-light mb-3 border-danger">
+
+          <div class="card-header border-danger "><strong>ZONA: {{raport.Asset.Zona}}</strong></div>
+              <div class="card-body  ">
+              <p class="card-title "><strong>Raport Statie Lucru</strong></p><hr/>
+              <p class="card-title "><strong>Linie Productie: {{raport.Asset}}</strong></p><hr/>
+              <p class="card-text"><strong>Statie Lucru: {{raport.SubAsset}}</strong></p><hr/>
+              <p class="card-text"><strong>Denumire Raport: {{raport.denumire}}</strong></p><hr/>
+              <p class="card-text"><strong>Initiat de: {{raport.NUME_ME_1}}</strong></p>
+              {%if not raport.Status_Preluat_MNT %}
+              <a href="{% url 'raportnousubasset0.0.1' pk=raport.pk %}"  class="btn btn-outline-danger">Preia Raport</a>
+              {%else%}
+              <a href="{% url 'raportnousubasset0.1' pk=raport.pk %}" class="btn btn-outline-danger" >Finalizare Raport</a>
+              {%endif%}
+              
+          </div>
+        </div>
+        {%endif%}
+      
+    {%endfor%}
+<p id="centrare">FOAMING</p><hr/>
+      {%for raport in Raport_asset %}
+        {% if raport.Asset.Zona.nume == 'Foaming' %}
+          
+        <div class="card text-dark bg-light mb-3 border-danger">
+
+          <div class="card-header border-danger "><strong> ZONA: {{raport.Asset.Zona}} </strong></div>
+              <div class="card-body  ">
+              <p class="card-title "><strong>Raport Linie Productie</strong></p><hr/>
+              <p class="card-title "><strong>Linie Productie: {{raport.Asset}}</strong></p><hr/>
+              
+              <p class="card-text"><strong>Denumire Raport: {{raport.denumire}}</strong></p><hr/>
+              <p class="card-text"><strong>Initiat de: {{raport.NUME_ME_1}}</strong></p><hr/>
+              {%if not raport.Status_Preluat_MNT %}
+              <a href="{% url 'raportnouasset0.0.1' pk=raport.pk %}"  class="btn btn-outline-danger">Preia Raport</a>
+              {%else%}
+              <a href="{% url 'raportnouasset0.1' pk=raport.pk %}" class="btn btn-outline-danger" >Finalizare Raport</a>
+              {%endif%}
+              
+          </div>
+        </div>
+        {%endif%}
+      
+
+    {%endfor%}
+
+
+         {%for raport in Raport_subasset %}
+           {% if raport.Asset.Zona.nume == 'Foaming' %}
+        <div class="card text-dark bg-light mb-3 border-danger">
+
+          <div class="card-header border-danger "><strong>ZONA: {{raport.Asset.Zona}}</strong></div>
+              <div class="card-body  ">
+              <p class="card-title "><strong>Raport Statie Lucru</strong></p><hr/>
+              <p class="card-title "><strong>Linie Productie: {{raport.Asset}}</strong></p><hr/>
+              <p class="card-text"><strong>Statie Lucru: {{raport.SubAsset}}</strong></p><hr/>
+              <p class="card-text"><strong>Denumire Raport: {{raport.denumire}}</strong></p><hr/>
+              <p class="card-text"><strong>Initiat de: {{raport.NUME_ME_1}}</strong></p>
+              {%if not raport.Status_Preluat_MNT %}
+              <a href="{% url 'raportnousubasset0.0.1' pk=raport.pk %}"  class="btn btn-outline-danger">Preia Raport</a>
+              {%else%}
+              <a href="{% url 'raportnousubasset0.1' pk=raport.pk %}" class="btn btn-outline-danger" >Finalizare Raport</a>
+              {%endif%}
+              
+          </div>
+        </div>
+        {%endif%}
+      
+    {%endfor%}
+
+<p id="centrare">DIECASTING</p><hr/>
+     {%for raport in Raport_asset %}
+        {% if raport.Asset.Zona.nume == 'Diecasting' %}
+          
+        <div class="card text-dark bg-light mb-3 border-danger">
+
+          <div class="card-header border-danger "><strong> ZONA: {{raport.Asset.Zona}} </strong></div>
+              <div class="card-body  ">
+              <p class="card-title "><strong>Raport Linie Productie</strong></p><hr/>
+              <p class="card-title "><strong>Linie Productie: {{raport.Asset}}</strong></p><hr/>
+              
+              <p class="card-text"><strong>Denumire Raport: {{raport.denumire}}</strong></p><hr/>
+              <p class="card-text"><strong>Initiat de: {{raport.NUME_ME_1}}</strong></p><hr/>
+              {%if not raport.Status_Preluat_MNT %}
+              <a href="{% url 'raportnouasset0.0.1' pk=raport.pk %}"  class="btn btn-outline-danger">Preia Raport</a>
+              {%else%}
+              <a href="{% url 'raportnouasset0.1' pk=raport.pk %}" class="btn btn-outline-danger" >Finalizare Raport</a>
+              {%endif%}
+              
+          </div>
+        </div>
+        {%endif%}
+      
+
+    {%endfor%}
+
+
+         {%for raport in Raport_subasset %}
+           {% if raport.Asset.Zona.nume == 'Diecasting' %}
+        <div class="card text-dark bg-light mb-3 border-danger">
+
+          <div class="card-header border-danger "><strong>ZONA: {{raport.Asset.Zona}}</strong></div>
+              <div class="card-body  ">
+              <p class="card-title "><strong>Raport Statie Lucru</strong></p><hr/>
+              <p class="card-title "><strong>Linie Productie: {{raport.Asset}}</strong></p><hr/>
+              <p class="card-text"><strong>Statie Lucru: {{raport.SubAsset}}</strong></p><hr/>
+              <p class="card-text"><strong>Denumire Raport: {{raport.denumire}}</strong></p><hr/>
+              <p class="card-text"><strong>Initiat de: {{raport.NUME_ME_1}}</strong></p>
+              {%if not raport.Status_Preluat_MNT %}
+              <a href="{% url 'raportnousubasset0.0.1' pk=raport.pk %}"  class="btn btn-outline-danger">Preia Raport</a>
+              {%else%}
+              <a href="{% url 'raportnousubasset0.1' pk=raport.pk %}" class="btn btn-outline-danger" >Finalizare Raport</a>
+              {%endif%}
+              
+          </div>
+        </div>
+        {%endif%}
+      
+    {%endfor%}
+<p id="centrare">IMO</p><hr/>
+     {%for raport in Raport_asset %}
+        {% if raport.Asset.Zona.nume == 'IMO' %}
+          
+        <div class="card text-dark bg-light mb-3 border-danger">
+
+          <div class="card-header border-danger "><strong> ZONA: {{raport.Asset.Zona}} </strong></div>
+              <div class="card-body  ">
+              <p class="card-title "><strong>Raport Linie Productie</strong></p><hr/>
+              <p class="card-title "><strong>Linie Productie: {{raport.Asset}}</strong></p><hr/>
+              
+              <p class="card-text"><strong>Denumire Raport: {{raport.denumire}}</strong></p><hr/>
+              <p class="card-text"><strong>Initiat de: {{raport.NUME_ME_1}}</strong></p><hr/>
+              {%if not raport.Status_Preluat_MNT %}
+              <a href="{% url 'raportnouasset0.0.1' pk=raport.pk %}"  class="btn btn-outline-danger">Preia Raport</a>
+              {%else%}
+              <a href="{% url 'raportnouasset0.1' pk=raport.pk %}" class="btn btn-outline-danger" >Finalizare Raport</a>
+              {%endif%}
+              
+          </div>
+        </div>
+        {%endif%}
+      
+
+    {%endfor%}
+
+
+         {%for raport in Raport_subasset %}
+           {% if raport.Asset.Zona.nume == 'IMO' %}
+        <div class="card text-dark bg-light mb-3 border-danger">
+
+          <div class="card-header border-danger "><strong>ZONA: {{raport.Asset.Zona}}</strong></div>
+              <div class="card-body  ">
+              <p class="card-title "><strong>Raport Statie Lucru</strong></p><hr/>
+              <p class="card-title "><strong>Linie Productie: {{raport.Asset}}</strong></p><hr/>
+              <p class="card-text"><strong>Statie Lucru: {{raport.SubAsset}}</strong></p><hr/>
+              <p class="card-text"><strong>Denumire Raport: {{raport.denumire}}</strong></p><hr/>
+              <p class="card-text"><strong>Initiat de: {{raport.NUME_ME_1}}</strong></p>
+              {%if not raport.Status_Preluat_MNT %}
+              <a href="{% url 'raportnousubasset0.0.1' pk=raport.pk %}"  class="btn btn-outline-danger">Preia Raport</a>
+              {%else%}
+              <a href="{% url 'raportnousubasset0.1' pk=raport.pk %}" class="btn btn-outline-danger" >Finalizare Raport</a>
+              {%endif%}
+              
+          </div>
+        </div>
+        {%endif%}
+      
+    {%endfor%}
+<p id="centrare">LEATHER WORKING</p><hr/>
+     {%for raport in Raport_asset %}
+        {% if raport.Asset.Zona.nume == 'LW' %}
+          
+        <div class="card text-dark bg-light mb-3 border-danger">
+
+          <div class="card-header border-danger "><strong> ZONA: {{raport.Asset.Zona}} </strong></div>
+              <div class="card-body  ">
+              <p class="card-title "><strong>Raport Linie Productie</strong></p><hr/>
+              <p class="card-title "><strong>Linie Productie: {{raport.Asset}}</strong></p><hr/>
+              
+              <p class="card-text"><strong>Denumire Raport: {{raport.denumire}}</strong></p><hr/>
+              <p class="card-text"><strong>Initiat de: {{raport.NUME_ME_1}}</strong></p><hr/>
+              {%if not raport.Status_Preluat_MNT %}
+              <a href="{% url 'raportnouasset0.0.1' pk=raport.pk %}"  class="btn btn-outline-danger">Preia Raport</a>
+              {%else%}
+              <a href="{% url 'raportnouasset0.1' pk=raport.pk %}" class="btn btn-outline-danger" >Finalizare Raport</a>
+              {%endif%}
+              
+          </div>
+        </div>
+        {%endif%}
+      
+
+    {%endfor%}
+
+
+         {%for raport in Raport_subasset %}
+           {% if raport.Asset.Zona.nume == 'LW' %}
+        <div class="card text-dark bg-light mb-3 border-danger">
+
+          <div class="card-header border-danger "><strong>ZONA: {{raport.Asset.Zona}}</strong></div>
+              <div class="card-body  ">
+              <p class="card-title "><strong>Raport Statie Lucru</strong></p><hr/>
+              <p class="card-title "><strong>Linie Productie: {{raport.Asset}}</strong></p><hr/>
+              <p class="card-text"><strong>Statie Lucru: {{raport.SubAsset}}</strong></p><hr/>
+              <p class="card-text"><strong>Denumire Raport: {{raport.denumire}}</strong></p><hr/>
+              <p class="card-text"><strong>Initiat de: {{raport.NUME_ME_1}}</strong></p>
+              {%if not raport.Status_Preluat_MNT %}
+              <a href="{% url 'raportnousubasset0.0.1' pk=raport.pk %}"  class="btn btn-outline-danger">Preia Raport</a>
+              {%else%}
+              <a href="{% url 'raportnousubasset0.1' pk=raport.pk %}" class="btn btn-outline-danger" >Finalizare Raport</a>
+              {%endif%}
+              
+          </div>
+        </div>
+        {%endif%}
+      
+    {%endfor%}
+<p id="centrare">TOOLSHOP</p><hr/>
+   {%for raport in Raport_asset %}
+        {% if raport.Asset.Zona.nume == 'Toolshop' %}
+          
+        <div class="card text-dark bg-light mb-3 border-danger">
+
+          <div class="card-header border-danger "><strong> ZONA: {{raport.Asset.Zona}} </strong></div>
+              <div class="card-body  ">
+              <p class="card-title "><strong>Raport Linie Productie</strong></p><hr/>
+              <p class="card-title "><strong>Linie Productie: {{raport.Asset}}</strong></p><hr/>
+              
+              <p class="card-text"><strong>Denumire Raport: {{raport.denumire}}</strong></p><hr/>
+              <p class="card-text"><strong>Initiat de: {{raport.NUME_ME_1}}</strong></p><hr/>
+              {%if not raport.Status_Preluat_MNT %}
+              <a href="{% url 'raportnouasset0.0.1' pk=raport.pk %}"  class="btn btn-outline-danger">Preia Raport</a>
+              {%else%}
+              <a href="{% url 'raportnouasset0.1' pk=raport.pk %}" class="btn btn-outline-danger" >Finalizare Raport</a>
+              {%endif%}
+              
+          </div>
+        </div>
+        {%endif%}
+      
+
+    {%endfor%}
+
+
+         {%for raport in Raport_subasset %}
+           {% if raport.Asset.Zona.nume == 'Toolshop' %}
+        <div class="card text-dark bg-light mb-3 border-danger">
+
+          <div class="card-header border-danger "><strong>ZONA: {{raport.Asset.Zona}}</strong></div>
+              <div class="card-body  ">
+              <p class="card-title "><strong>Raport Statie Lucru</strong></p><hr/>
+              <p class="card-title "><strong>Linie Productie: {{raport.Asset}}</strong></p><hr/>
+              <p class="card-text"><strong>Statie Lucru: {{raport.SubAsset}}</strong></p><hr/>
+              <p class="card-text"><strong>Denumire Raport: {{raport.denumire}}</strong></p><hr/>
+              <p class="card-text"><strong>Initiat de: {{raport.NUME_ME_1}}</strong></p>
+              {%if not raport.Status_Preluat_MNT %}
+              <a href="{% url 'raportnousubasset0.0.1' pk=raport.pk %}"  class="btn btn-outline-danger">Preia Raport</a>
+              {%else%}
+              <a href="{% url 'raportnousubasset0.1' pk=raport.pk %}" class="btn btn-outline-danger" >Finalizare Raport</a>
+              {%endif%}
+              
+          </div>
+        </div>
+        {%endif%}
+      
+    {%endfor%}
+</div>
+
+
+    {% endblock %}
+
+
+
+
+
+ 
+

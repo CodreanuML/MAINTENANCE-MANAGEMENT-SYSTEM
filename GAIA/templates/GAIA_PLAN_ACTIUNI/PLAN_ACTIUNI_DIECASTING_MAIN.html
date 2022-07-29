@@ -1,0 +1,168 @@
+{% extends 'base_assets.html' %}
+ {% block title %}<title>Assets</title>{% endblock%}
+
+
+    {% block content %}
+
+
+
+
+    
+
+
+
+
+     
+ 
+                <div class="alert alert-primary" role="alert">
+                <div class="row justify-content-center">
+                PLAN ACTIUNI DIECASTING
+                </div>
+                </div>
+            
+<ul class="nav nav-tabs">
+
+
+
+    <li class="nav-item">
+    <a class="nav-link " aria-current="page" href="{% url 'GAIA_PLAN_ACTIUNI:asamblare_actiuni_main'  %}">ASAMBLARE</a>
+  </li>
+
+  <li class="nav-item">
+    <a class="nav-link " href="{% url 'GAIA_PLAN_ACTIUNI:airbag_actiuni_main'  %}">AIRBAG </a>
+  </li>
+
+    <li class="nav-item">
+    <a class="nav-link active" href="{% url 'GAIA_PLAN_ACTIUNI:diecasting_actiuni_main' %}">DIECASTING</a>
+  </li>
+
+    <li class="nav-item">
+    <a class="nav-link" href="{% url 'GAIA_PLAN_ACTIUNI:foaming_actiuni_main' %}">FOAMING</a>
+  </li>
+
+    <li class="nav-item">
+    <a class="nav-link" href="{% url 'GAIA_PLAN_ACTIUNI:imo_actiuni_main' %}">IMO</a>
+  </li>
+
+    <li class="nav-item">
+    <a class="nav-link" href="{% url 'GAIA_PLAN_ACTIUNI:lw_actiuni_main' %}">LEATHER C</a>
+  </li>
+
+    <li class="nav-item">
+    <a class="nav-link" href="{% url 'GAIA_PLAN_ACTIUNI:toolshop_actiuni_main' %}">TOOLSHOP</a>
+  </li>
+
+
+</ul>
+
+<div class="row">
+    <table class="table">
+
+        <thead>
+             <tr>
+                <th scope="#">#</th>
+                <th scope="col">Denumire</th>
+                <th scope="col">Actiune</th>
+                <th scope="col">Responsabili</th>
+                <th scope="col">Status</th>
+               <th scope="col">Vezi Detalii</th> 
+               
+            </tr>
+        </thead>
+
+        <tbody>
+
+          {%for actiune in page_obj %}
+               <tr>
+                <td>{{actiune.pk}}</td>
+                <td>{{actiune.denumire}}</td>
+                <td>{{actiune.Actiune}}</td>
+                <td>
+
+                  {% for act in actiune.responsabil.all %}
+
+                {{act.user.username}} <br />
+
+                {% endfor %}
+              </td>
+                
+                <td>{{actiune.get_status_display}}</td>
+                
+                <td>
+
+
+
+                                <button type="button" class="btn btn-outline-primary"><a href="{% url 'GAIA_PLAN_ACTIUNI:vizualizare_actiune' actiune.pk %}">Vezi Detalii </a></button>  </td>
+              </tr>
+           {% endfor %}
+               
+ 
+         </tbody>
+
+
+
+
+
+
+    </table>
+
+
+
+
+        {% if page_obj.has_other_pages %}
+<nav aria-label="Topics pagination" class="mb-4">
+    <ul class="pagination">
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Previous</span>
+        </li>
+      {% endif %}
+
+      {% for page_num in page_obj.paginator.page_range %}
+        {% if page_obj.number == page_num %}
+          <li class="page-item active">
+            <span class="page-link">
+              {{ page_num }}
+              <span class="sr-only">(current)</span>
+            </span>
+          </li>
+        {% else %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+        </li>
+      {% else %}
+        <li class="page-item disabled">
+          <span class="page-link">Next</span>
+        </li>
+      {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+
+
+<div class="row">
+    <button type="button" class="btn btn-outline-primary ml-3"><a href="{% url 'GAIA_PLAN_ACTIUNI:adauga_actiune' %}">ADAUGA ACTIUNE</a></button>  
+
+</div>
+
+
+
+
+
+
+
+
+    {% endblock %}
+
